@@ -9,6 +9,7 @@ import pathlib
 
 CONDUIT_API_URL='https://api.conduit.xyz/'
 BOOTNODES_API_PATH='/public/network/bootnodes/'
+STATICPEERS_API_PATH='/public/network/staticPeers/'
 ROLLUP_API_PATH='/file/v1/optimism/rollup/'
 GENESIS_API_PATH='/file/v1/optimism/genesis/'
 CONDUIT_RPC_SUFFIX='t.conduit.xyz'
@@ -16,6 +17,7 @@ CONDUIT_RPC_SUFFIX='t.conduit.xyz'
 ENV_TEMPLATE='''
 OP_GETH_SEQUENCER_HTTP={rpc_url}
 OP_NODE_P2P_BOOTNODES={bootnodes}
+OP_NODE_P2P_STATIC={staticPeers}
 '''
 
 def fetch_data(api_path, slug):
@@ -47,11 +49,27 @@ except Exception as e:
     print("Do you have the right network slug?")
 
 print("Fetching bootnodes")
+bootnodes = ''
 try:
     bootnodes = fetch_data(BOOTNODES_API_PATH, args.slug).decode('utf-8')
-    env_file = ENV_TEMPLATE.format(rpc_url=f'https://rpc-{args.slug}.{CONDUIT_RPC_SUFFIX}', bootnodes=bootnodes)
-    with open(slug_dir / '.env', 'w') as f:
-        f.write(env_file)
 except Exception as e:
     print("Failed to fetch bootnodes with exception:", e)
     print("Are external nodes enabled for this network?")
+    exit(1)
+
+print("Fetching static peers")
+staticPeers = ''
+try:
+    staticPeers = fetch_data(STATICPEERS_API_PATH, args.slug).decode('utf-8')
+except Exception as e:
+    print("Failed to fetch static peers with exception:", e)
+    print("Are external nodes enabled for this network?")
+    exit(1)
+
+try:
+    env_file = ENV_TEMPLATE.format(rpc_url=f'https://rpc-{args.slug}.{CONDUIT_RPC_SUFFIX}', bootnodes=bootnodes, staticPeers=staticPeers)
+    with open(slug_dir / '.env', 'w') as f:
+        f.write(env_file)
+except Exception as e:
+    print("Unable to write configuration:", e)
+    exit(1)
