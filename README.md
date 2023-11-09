@@ -41,10 +41,10 @@ If you encounter problems with your node, please open a [GitHub issue](https://g
 
 ### Supported networks
 
-| Ethereum Network | Status |
-|------------------| ------ |
-| Zora Sepolia  | ✅     |
-| PGN Sepolia  | ✅     |
+| Ethereum Network | Status | Slug |
+|------------------| ------ | ---- |
+| Zora Sepolia  | ✅     | zora-sepolia-0thyhxtf5e |
+| PGN Sepolia  | ✅     | pgn-sepolia-i4td3ji6i0 |
 
 ### Usage
 
