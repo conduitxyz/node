@@ -33,7 +33,7 @@ args = parser.parse_args()
 repo_dir = pathlib.Path(__file__).parent
 network_dir = repo_dir / 'networks'
 slug_dir = network_dir / args.slug
-slug_dir.mkdir(exist_ok=True)
+slug_dir.mkdir(exist_ok=True, parents=True)
 
 print("Downloading rollup.json")
 try:
