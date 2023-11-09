@@ -16,7 +16,7 @@ CONDUIT_RPC_SUFFIX='t.conduit.xyz'
 
 ENV_TEMPLATE='''
 OP_GETH_SEQUENCER_HTTP={rpc_url}
-OP_NODE_P2P_BOOTNODES={bootnodes}
+#OP_NODE_P2P_BOOTNODES={bootnodes}
 OP_NODE_P2P_STATIC={staticPeers}
 '''
 
