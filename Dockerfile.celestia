@@ -1,0 +1,40 @@
+FROM golang:1.21.1 as op
+
+WORKDIR /app
+
+ENV REPO=https://github.com/celestiaorg/optimism.git
+# for verification:
+ENV COMMIT=01f968f83978bceb4aed5939f4d9e3f08a790d31
+
+RUN git clone $REPO . && git checkout $COMMIT
+
+RUN cd op-node && \
+    make op-node
+
+FROM golang:1.20 as geth
+
+WORKDIR /app
+
+ENV REPO=https://github.com/ethereum-optimism/op-geth.git
+ENV VERSION=v1.101304.2
+# for verification:
+ENV COMMIT=c6b416da212fe6713ff40b8092303d0035405a47
+
+# avoid depth=1, so the geth build can read tags
+RUN git clone $REPO --branch $VERSION --single-branch . && \
+    git switch -c branch-$VERSION && \
+    bash -c '[ "$(git rev-parse HEAD)" = "$COMMIT" ]'
+
+RUN go run build/ci.go install -static ./cmd/geth
+
+FROM golang:1.20
+
+RUN apt-get update && apt-get install -y jq curl
+
+WORKDIR /app
+
+COPY --from=op /app/op-node/bin/op-node ./
+COPY --from=geth /app/build/bin/geth ./
+COPY geth-entrypoint .
+COPY op-node-entrypoint .
+COPY op-node-entrypoint.celestia.sh .

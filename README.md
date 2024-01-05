@@ -77,10 +77,28 @@ Note: The external nodes feature must be enabled on the network for this to work
 OP_NODE_L1_ETH_RPC=https://mainnet.gateway.tenderly.co/<your-tenderly-api-key>
 ```
 
+If you are running a stack using `celestia` for DA, copy instead `.env.example.celestia` to `.env`, set also `CELESTIA_CORE_IP`, `CELESTIA_API` and `CELESTIA_P2P_NETWORK`. Example:
+
+```
+# .env file
+# see celestia doc for public nodes list
+# testnet https://docs.celestia.org/nodes/mocha-testnet#bridge-full-and-light-nodes
+# mainnet https://docs.celestia.org/nodes/mainnet
+CELESTIA_CORE_IP=full.consensus.mocha-4.celestia-mocha.com
+CELESTIA_API=https://rpc.celestia-mocha.com
+# mocha-4 for testnet and for mainnet use mainnet
+CELESTIA_P2P_NETWORK=mocha-4
+```
+
 4. Start the node!
 
 ```
 docker compose up --build
+```
+
+For stacks using `celestia` for DA
+```
+docker compose -f docker-compose.celestia.yml up --build
 ```
 
 5. You should now be able to `curl` your Conduit node:
