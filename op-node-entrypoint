@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 set -eu
 
 # wait until local geth comes up (authed so will return 401 without token)
@@ -22,6 +22,6 @@ if [ "${CHAIN_ID}" = "58008" ]; then
   export OP_NODE_NETWORK="pgn-sepolia"
 fi
 
-echo "$OP_NODE_L2_ENGINE_AUTH_RAW" > "$OP_NODE_L2_ENGINE_AUTH"
+echo "$CONDUIT_OP_NODE_L2_ENGINE_AUTH_RAW" > "$OP_NODE_L2_ENGINE_AUTH"
 
-exec ./op-node
+exec op-node
