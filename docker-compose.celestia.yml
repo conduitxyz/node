@@ -1,28 +1,26 @@
 version: '3.8'
 
 services:
-  da: #this is Celestia's light client
+  celestia-node: #this is Celestia's light client
     build:
       context: .
-      dockerfile: ./Dockerfile.da
+      dockerfile: ./celestia-node.Dockerfile
     ports:
-      - "26650:26650"
-      - "26659:26659"
-    command: [ "bash", "./da-entrypoint" ]
+      - 26650:26650 # GRPC
+      - 26659:26659 # REST
     env_file:
       - networks/${CONDUIT_NETWORK:?set network}/.env
       - .env
-  geth: # this is Optimism's geth client
-    build: 
+  op-geth: # this is Optimism's geth client
+    build:
       context: .
-      dockerfile: ./Dockerfile.celestia
+      dockerfile: op-geth.Dockerfile
     ports:
       - 8545:8545       # RPC
       - 8546:8546       # websocket
       - 30303:30303     # P2P TCP (currently unused)
       - 30303:30303/udp # P2P UDP (currently unused)
       - 7301:6060       # metrics
-    command: [ "bash", "./geth-entrypoint" ]
     env_file:
       - .env.default
       - networks/${CONDUIT_NETWORK:?set network}/.env
@@ -30,19 +28,18 @@ services:
     volumes:
       #- ./geth-data/:/data # enable to have persistency between restarts
       - ./networks/${CONDUIT_NETWORK:?set network}/genesis.json:/genesis.json
-  node:
+  op-node:
     build:
-      context: . 
-      dockerfile: ./Dockerfile.celestia
+      context: .
+      dockerfile: celestia-op-node.Dockerfile
     depends_on:
-      - geth
+      - op-geth
     ports:
       - 7545:8545     # RPC
       - 9222:9222     # P2P TCP
       - 9222:9222/udp # P2P UDP
       - 7300:7300     # metrics
       - 6060:6060     # pprof
-    command: [ "bash", "./op-node-entrypoint.celestia.sh" ]
     env_file:
       - .env.default
       - .env.default.celestia

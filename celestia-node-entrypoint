@@ -1,0 +1,13 @@
+#!/bin/sh
+set -eu
+
+celestia light init \
+    --p2p.network $CELESTIA_P2P_NETWORK \
+
+exec celestia light start \
+    --p2p.network=$CELESTIA_P2P_NETWORK \
+    #--da.grpc.namespace=$CELESTIA_NAMESPACE \
+    --da.grpc.listen=0.0.0.0:26650 \
+    --core.ip $CELESTIA_CORE_IP \
+    --gateway\
+    --gateway.addr=0.0.0.0

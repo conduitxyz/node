@@ -1,3 +1,0 @@
-FROM ghcr.io/rollkit/celestia-da:v0.12.2
-
-COPY da-entrypoint .
