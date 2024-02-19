@@ -12,6 +12,11 @@ PUBLIC_IP=$(curl -s v4.ident.me)
 export OP_NODE_P2P_ADVERTISE_IP=$PUBLIC_IP
 CHAIN_ID=$(jq -r .config.chainId < "$OP_GETH_GENESIS_FILE_PATH")
 
+if [ "${CHAIN_ID}" = "919" ]; then
+	export OP_NODE_ROLLUP_CONFIG=""
+  export OP_NODE_NETWORK="mode-sepolia"
+fi
+
 if [ "${CHAIN_ID}" = "999999999" ]; then
 	export OP_NODE_ROLLUP_CONFIG=""
   export OP_NODE_NETWORK="zora-sepolia"

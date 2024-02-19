@@ -48,6 +48,8 @@ If you encounter problems with your node, please open a [GitHub issue](https://g
 
 |Network|Slug|Status|
 |------------------|------|:----:|
+| Mode Sepolia|mode-sepolia-vtnhnpim72|✅|
+| Mode Mainnet|mode-mainnet-0|✅|
 | Zora Sepolia|zora-sepolia-0thyhxtf5e|✅|
 | Zora Mainnet|zora-mainnet-0|✅|
 | PGN Sepolia|pgn-sepolia-i4td3ji6i0|✅|
@@ -57,8 +59,8 @@ If you encounter problems with your node, please open a [GitHub issue](https://g
 1. Select the network you want to run and set `CONDUIT_NETWORK` env variable. You will need to know the `slug` of the network. You can find this in the Conduit console. For public networks you can use the table above. Example:
 
 ```
-# for Zora Mainnet
-export CONDUIT_NETWORK=zora-mainnet-0
+# for Mode Mainnet
+export CONDUIT_NETWORK=mode-mainnet-0
 ```
 
 Note: The external nodes feature must be enabled on the network for this to work. For the public networks above this is already set.
