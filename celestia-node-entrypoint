@@ -4,6 +4,11 @@ set -eu
 celestia light init \
     --p2p.network $CELESTIA_P2P_NETWORK \
 
+sed -i 's/StartupTimeout = "[^"]*"/StartupTimeout = "3000s"/' /home/celestia/.celestia-light/config.toml
+sed -i 's/ShutdownTimeout = "[^"]*"/ShutdownTimeout = "3000s"/' /home/celestia/.celestia-light/config.toml
+awk '/^\[RPC\]/ {block="RPC"} /^\[Gateway\]/ {block="Gateway"} block == "RPC" && $1 == "Address" {gsub(/".*"/, "\"0.0.0.0\"")} block == "Gateway" && $1 == "Address" {gsub(/".*"/, "\"0.0.0.0\"")} 1' /home/celestia/.celestia-light/config.toml > /home/celestia/temp
+mv /home/celestia/temp /home/celestia/.celestia-light/config.toml
+
 exec celestia light start \
     --p2p.network=$CELESTIA_P2P_NETWORK \
     #--da.grpc.namespace=$CELESTIA_NAMESPACE \
