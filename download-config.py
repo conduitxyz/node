@@ -51,7 +51,7 @@ except Exception as e:
 print("Fetching bootnodes")
 bootnodes = ''
 try:
-    bootnodes = fetch_data(BOOTNODES_API_PATH, args.slug).decode('utf-8')
+    bootnodes = fetch_data(BOOTNODES_API_PATH, args.slug)
 except Exception as e:
     print("Failed to fetch bootnodes with exception:", e)
     print("Are external nodes enabled for this network?")
