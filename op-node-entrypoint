@@ -42,6 +42,16 @@ if [ "${CHAIN_ID}" = "424" ]; then
   export OP_NODE_NETWORK="pgn-mainnet"
 fi
 
+if [ "${CHAIN_ID}" = "4460" ]; then
+  export OP_NODE_ROLLUP_CONFIG=""
+  export OP_NODE_NETWORK="orderly-sepolia"
+fi
+
+if [ "${CHAIN_ID}" = "291" ]; then
+  export OP_NODE_ROLLUP_CONFIG=""
+  export OP_NODE_NETWORK="orderly-mainnet"
+fi
+
 echo "$CONDUIT_OP_NODE_L2_ENGINE_AUTH_RAW" > "$OP_NODE_L2_ENGINE_AUTH"
 
 exec op-node
