@@ -60,6 +60,14 @@ if [ "${CHAIN_ID}" = "424" ]; then
 	ADDITIONAL_ARGS="$ADDITIONAL_ARGS --rollup.superchain-upgrades --op-network pgn-mainnet --rollup.halt=major"
 fi
 
+if [ "${CHAIN_ID}" = "4460" ]; then
+	ADDITIONAL_ARGS="$ADDITIONAL_ARGS --rollup.superchain-upgrades --op-network orderly-sepolia --rollup.halt=major"
+fi
+
+if [ "${CHAIN_ID}" = "291" ]; then
+	ADDITIONAL_ARGS="$ADDITIONAL_ARGS --rollup.superchain-upgrades --op-network orderly-mainnet --rollup.halt=major"
+fi
+
 exec geth \
 	--datadir="$GETH_DATA_DIR" \
 	--verbosity="$VERBOSITY" \
