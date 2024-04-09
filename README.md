@@ -53,6 +53,8 @@ If you encounter problems with your node, please open a [GitHub issue](https://g
 | Zora Sepolia|zora-sepolia-0thyhxtf5e|✅|
 | Zora Mainnet|zora-mainnet-0|✅|
 | PGN Sepolia|pgn-sepolia-i4td3ji6i0|✅|
+| Orderly Sepolia|orderly-l2-4460-sepolia-8tc3sd7dvy|✅|
+| Orderly Mainnet|orderly-mainnet-0|✅|
 
 ### Usage
 
