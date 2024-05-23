@@ -46,13 +46,17 @@ If you encounter problems with your node, please open a [GitHub issue](https://g
 
 ### Supported networks
 
-|Network|Slug|Status|
-|------------------|------|:----:|
-| Mode Sepolia|mode-sepolia-vtnhnpim72|✅|
-| Mode Mainnet|mode-mainnet-0|✅|
-| Zora Sepolia|zora-sepolia-0thyhxtf5e|✅|
-| Zora Mainnet|zora-mainnet-0|✅|
-| PGN Sepolia|pgn-sepolia-i4td3ji6i0|✅|
+| Network      | Slug                    | Status |
+| ------------ | ----------------------- | :----: |
+| Zora Sepolia | zora-sepolia-0thyhxtf5e |   ✅   |
+| Zora Mainnet | zora-mainnet-0          |   ✅   |
+| PGN Sepolia  | pgn-sepolia-i4td3ji6i0  |   ✅   |
+| Mode Sepolia | mode-sepolia-vtnhnpim72 |   ✅   |
+| Mode Mainnet | mode-mainnet-0	         |   ✅   |
+| Ancient8 Sepolia | ancient-8-celestia-wib77nnwsq |   ✅   |
+| Ancient8 Mainnet | ancient8-mainnet-0  |   ✅   |
+| BOB Mainnet  | bob-mainnet-0           |   ✅   |
+| Gold Mainnet | gold-mainnet-0          |   ✅   |
 
 ### Usage
 
