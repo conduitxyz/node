@@ -57,6 +57,7 @@ If you encounter problems with your node, please open a [GitHub issue](https://g
 | Ancient8 Mainnet | ancient8-mainnet-0  |   ✅   |
 | BOB Mainnet  | bob-mainnet-0           |   ✅   |
 | Gold Mainnet | gold-mainnet-0          |   ✅   |
+| Mint Mainnet | mint-mainnet-0          |   ✅   |
 
 ### Usage
 
