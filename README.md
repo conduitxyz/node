@@ -69,7 +69,7 @@ If you encounter problems with your node, please open a [GitHub issue](https://g
 export CONDUIT_NETWORK=mode-mainnet-0
 ```
 
-Note: The external nodes feature must be enabled on the network for this to work. For the public networks above this is already set.
+Note: The external nodes feature must be enabled on the network for this to work. For the public networks above this is already set. For private networks this is disabled by default. If you are a mainnet/enterprise customer, we can enable this upon request.
 
 2. Download the required network configuration with:
 
