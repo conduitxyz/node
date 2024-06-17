@@ -1,3 +1,7 @@
+:warning: **Deprecation Notice:** This repository is deprecated. Please refer to the [Conduit Nodes documentation](https://docs.conduit.xyz/nodes/nodes-overview) for instructions and support on how to build on top of Conduit networks. For information on self-hosted nodes, please refer to [Self-Hosted Nodes Guide](https://docs.conduit.xyz/guides/run-a-node/op-stack-node).
+
+---
+
 ![Conduit](logo.png)
 
 # Conduit node
